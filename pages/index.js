@@ -36,45 +36,45 @@ export default function Home() {
       });
       setFilteredResults(filteredData);
     } else {
-      // else if none = data
       setFilteredResults(data);
     }
   };
 
-  //
-  if (isLoading) return <p>Loading...</p>;
-  if (!data) return <p>No user data</p>;
+  if (isLoading) 
+  return <p>Loading...</p>;
+  if (!data) 
+  return <p>No user data</p>;
 
   // render, search bar, and map of data
   return (
     <div className={styles.container}>
       <Head>
-        <title>User Finder</title>
+        <title>RandomUSER</title>
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>User Finder!</h1>
-        <p className={styles.caption}>
-          An application for searching on random user
+        <div className={styles.title}>
+          Search on&nbsp;
+          <span>
+            <a href="https://randomuser.me/api/?results=100">RandomUSER</a>
+          </span>
+        </div>
+        <p className={styles.description}>
+          An application for searching on randomly generated user
         </p>
-        <div>
+        <div className={styles.inputdiv}>
           <input
             type="text"
-            placeholder="Search User"
+            placeholder="Search user"
             onChange={(e) => searchItems(e.target.value)}
           ></input>
         </div>
-        <div className={styles.cards}>
+        <div className={styles.cards_container}>
           {searchUser.length > 1
             ? filteredResults.map((value) => {
                 return (
                   <div className={styles.card}>
-                    <img
-                      className={styles.avatar}
-                      src={value.picture.medium}
-                      border="5"
-                      allign="center"
-                    ></img>
+                    <img src={value.picture.medium}></img>
                     <p>
                       {value.name.first} {value.name.last}
                     </p>
@@ -85,13 +85,7 @@ export default function Home() {
             : data.map((value) => {
                 return (
                   <div className={styles.card}>
-                    <img
-                      className={styles.avatar}
-                      src={value.picture.medium}
-                      border="5"
-                      allign="center"
-                    ></img>
-
+                    <img src={value.picture.medium}></img>
                     <p>
                       {value.name.first} {value.name.last}
                     </p>
